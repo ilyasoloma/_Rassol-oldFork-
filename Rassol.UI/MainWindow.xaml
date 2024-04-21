@@ -1,0 +1,116 @@
+﻿<Window x:Class="Rassol.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rassol"
+       
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1600">
+
+  
+    <Grid>
+        <TabControl x:Name="mainTabControl" TabStripPlacement="Left" Margin="-10,10,10,0" IsSynchronizedWithCurrentItem="False" SelectionChanged="mainTabControl_SelectionChanged">
+            <TabItem x:Name="mainTab" Header="Главная" Margin="0,0,-5, 0" TabIndex="0">
+                <Grid Background="#FFE5E5E5" Margin="10,0,0,0" RenderTransformOrigin="0.503,0.446">
+                    <TextBox x:Name="pathFileSquad" HorizontalAlignment="Left" Margin="80,131,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="165" IsEnabled="False"/>
+                    <Button x:Name="buttonOpenSquad" Content="Открыть" HorizontalAlignment="Left" Margin="255,131,0,0" VerticalAlignment="Top" Width="65" Height="18" Click="buttonOpenSquad_Click"/>
+                    <Label Content="Файл .csv  с отрядами" HorizontalAlignment="Left" Margin="80,92,0,0" VerticalAlignment="Top" Height="25" Width="165"/>
+                    <Label Content="Файл .csv  помещения" HorizontalAlignment="Left" Margin="435,92,0,0" VerticalAlignment="Top" Height="25" Width="165"/>
+                    <TextBox x:Name="pathFileHome" HorizontalAlignment="Left" Margin="435,131,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="165" IsEnabled="False"/>
+                    <Button x:Name="buttonOpenHome" Content="Открыть" HorizontalAlignment="Left" Margin="615,131,0,0" VerticalAlignment="Top" Width="65" Height="18" Click="buttonOpenHome_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="previewTab" Header="Предварительный просмотр" Margin="0,0,-5,0" Height="20" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5" Margin="10,0,0,0">
+                    <TabControl Margin="0,0,0,10">
+                        <TabItem x:Name="previewSquadTab" Header="Отряды по штабам">
+                            <Grid Background="#FFE5E5E5">
+                                <DataGrid x:Name="headquartersData" IsReadOnly="True" AutoGenerateColumns="False"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="auto" SelectedCellsChanged="headquartersData_SelectedCellsChanged">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Название штаба" Width="150" />
+                                        <DataGridTextColumn Binding="{Binding Path=HeadquartersQuota}" Header="Количество квот" Width="140"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <DataGrid x:Name="squadEditor" IsReadOnly="False" AutoGenerateColumns="False"  HorizontalAlignment="Right" VerticalAlignment="Top" Height="500" AddingNewItem="squadEditor_AddingNewItem">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Header="Отряд" Width="100"/>
+                                        <DataGridTextColumn Binding="{Binding Path=Quota,UpdateSourceTrigger=PropertyChanged}" Header="Квота" Width="50"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button Content="Update and Save" Name="updateBtn" Width="auto" Height="20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,150" Click="updateBtn_Click" />
+                                <Button  Content="Calc" Name="Calc" Width="auto" Height="20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,100" Click="Calc_Click"/>
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="previewHomeSquad" Header="Помещения">
+                            <Grid>
+                                <DataGrid x:Name="homeData" AutoGenerateColumns="False" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="300" IsSynchronizedWithCurrentItem="False" SelectedCellsChanged="homeData_SelectedCellsChanged">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Header="Название" Width="100"/>
+                                        <DataGridTextColumn Binding="{Binding Path=SumHomeBeds, UpdateSourceTrigger=PropertyChanged}" Header="Суммарное количетсво коек" Width="150"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <DataGrid x:Name="roomEditor" AutoGenerateColumns="False"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" Height="600">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Path=RoomNumber, UpdateSourceTrigger=PropertyChanged}" Header="Номер комнаты" Width="100"/>
+                                        <DataGridTextColumn Binding="{Binding Path=Level, UpdateSourceTrigger=PropertyChanged}" Header="Этаж" Width="100"/>
+                                        <DataGridTextColumn Binding="{Binding Path=CountBeds, UpdateSourceTrigger=PropertyChanged}" Header="sum" Width="100" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button Content="Update and save" Name="UpdateButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="auto" Height="20" Margin="0,0,15,60" Click="UpdateButton_Click"  />
+                            </Grid>
+
+
+                        </TabItem>
+                        <TabItem x:Name="previewImageHomeSquad" Header="Изображения помещений">
+                            <Grid Background="#FFE5E5E5">
+                               
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Расселение" TabIndex="3">
+                <TabControl x:Name="settlementTabControll">
+
+                    <TabItem x:Name="summaryTab" Header="Сводная таблица">
+                        <Grid>
+                            <DataGrid x:Name="summaryDataGrid" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="auto" SelectedCellsChanged="summaryDataGrid_SelectedCellsChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Header="Название помещения" Width="100"/>
+                                    <DataGridTextColumn Binding="{Binding Path=SumHomeBeds, UpdateSourceTrigger=PropertyChanged}" Header="Остаток свободных мест" Width="100"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <DataGrid x:Name="roomDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" Height="auto" SelectedCellsChanged="roomDataGrid_SelectedCellsChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Path=RoomNumber, UpdateSourceTrigger=PropertyChanged}" Header="Номер комнаты" Width="100"/>
+                                    <DataGridTextColumn Binding="{Binding Path=Level, UpdateSourceTrigger=PropertyChanged}" Header="Этаж" Width="50"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <DataGrid x:Name="squadDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Right" VerticalAlignment="Top" Width="auto" Height="auto">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Key, UpdateSourceTrigger=PropertyChanged}" Header="Отряд" Width="100"/>
+                                    <DataGridTextColumn Binding="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Header="Количество занятых мест" Width="150"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="Tree" Header="ебень">
+                        <Grid Width="auto" Height="auto">
+                            <TreeView x:Name="TreeHome" HorizontalAlignment="Left" Width="500" Height="auto"
+                                      PreviewMouseLeftButtonDown="TreeHome_PreviewMouseLeftButtonDown"
+                                      AllowDrop="True" 
+                                      PreviewMouseMove="TreeHome_PreviewMouseMove" 
+                                      Drop="TreeHome_Drop">
+                                <TreeViewItem Header="22" />
+                            </TreeView>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+
+        </TabControl>
+    </Grid>
+</Window>

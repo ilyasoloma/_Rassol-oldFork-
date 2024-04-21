@@ -1,0 +1,6 @@
+Merge branch 'main' of https://github.com/ilyasoloma/Rassol into dev
+
+# Conflicts:
+#	.vs/Rassol/v17/.suo
+#	Rassol.Core
+#	Rassol.UI/obj/Debug/Rassol.UI_MarkupCompile.i.cache

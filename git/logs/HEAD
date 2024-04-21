@@ -1,0 +1,9 @@
+0000000000000000000000000000000000000000 9743c7f9d67bfb705a81157c970ae956ad8cc9ac ilyasoloma <ilyasoloma@inbox.ru> 1688059483 +0300	commit (initial): v.1
+9743c7f9d67bfb705a81157c970ae956ad8cc9ac 0000000000000000000000000000000000000000 ilyasoloma <ilyasoloma@inbox.ru> 1688059548 +0300	Branch: renamed refs/heads/main to refs/heads/main
+9743c7f9d67bfb705a81157c970ae956ad8cc9ac 9743c7f9d67bfb705a81157c970ae956ad8cc9ac ilyasoloma <ilyasoloma@inbox.ru> 1688059548 +0300	Branch: renamed refs/heads/main to refs/heads/main
+9743c7f9d67bfb705a81157c970ae956ad8cc9ac c42459121656a1b4e5e53ab14be5fdff3e2750e6 ilyasoloma <ilyasoloma@inbox.ru> 1688060635 +0300	commit: test
+c42459121656a1b4e5e53ab14be5fdff3e2750e6 0000000000000000000000000000000000000000 ilyasoloma <ilyasoloma@inbox.ru> 1689516249 +0300	Branch: renamed refs/heads/main to refs/heads/dev
+0000000000000000000000000000000000000000 c42459121656a1b4e5e53ab14be5fdff3e2750e6 ilyasoloma <ilyasoloma@inbox.ru> 1689516249 +0300	Branch: renamed refs/heads/main to refs/heads/dev
+c42459121656a1b4e5e53ab14be5fdff3e2750e6 caee16fb8be485426606dcf9b909b0b7bae627ad ilyasoloma <ilyasoloma@inbox.ru> 1689516929 +0300	commit: //
+caee16fb8be485426606dcf9b909b0b7bae627ad caee16fb8be485426606dcf9b909b0b7bae627ad ilyasoloma <ilyasoloma@inbox.ru> 1689517399 +0300	reset: moving to HEAD
+caee16fb8be485426606dcf9b909b0b7bae627ad caee16fb8be485426606dcf9b909b0b7bae627ad ilyasoloma <ilyasoloma@inbox.ru> 1689517494 +0300	reset: moving to HEAD

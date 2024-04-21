@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PendingCommit>
+  <CommitComment>unstable</CommitComment>
+  <PinnedBranches>
+    <PinnedBranch Name="refs/remotes/origin/main" />
+  </PinnedBranches>
+  <PublishPrompt Enabled="True" />
+  <RepositorySorts />
+</PendingCommit>
